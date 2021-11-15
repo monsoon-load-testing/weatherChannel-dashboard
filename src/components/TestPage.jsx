@@ -1,3 +1,5 @@
+import { DraftChart } from "./DraftChart"
+
 const TestPage = () => {
   return (
     <div class="h-screen w-full bg-white relative flex overflow-hidden">
@@ -28,7 +30,7 @@ const TestPage = () => {
           <div class="h-full w-full m-4 flex flex-wrap items-start justify-start rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
             {/* <!-- Container --> */}
             <div class="w-full h-60 rounded-lg flex-shrink-0 flex-grow bg-gray-400">Statistics go here</div>
-            <div class="w-full h-full rounded-lg flex-shrink-0 flex-grow bg-gray-400">Chart goes here</div>
+            <div class="w-full h-full rounded-lg flex-shrink-0 flex-grow bg-gray-400"><DraftChart /></div>
           </div>
         </main>
       </div>
