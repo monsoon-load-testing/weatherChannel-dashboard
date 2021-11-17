@@ -80,7 +80,9 @@ const TestPage = () => {
           {/* <!-- Container --> */}
           <div className="h-full w-full rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
             {/* <!-- Container --> */}
-            <Statistics />
+            {JSON.stringify(currentStats) !== "{}" && (
+              <Statistics {...currentStats} />
+            )}
             {JSON.stringify(currentData) !== "{}" && (
               <ChartContainer {...currentData} />
             )}

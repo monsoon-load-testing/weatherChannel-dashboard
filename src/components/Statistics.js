@@ -1,6 +1,11 @@
 import StatisticRow from "./StatisticRow";
 
-const Statistics = () => {
+const Statistics = ({ responseTime }) => {
+  const p95 = Math.round(responseTime["95th Percentile"]);
+  const average = Math.round(responseTime["Average"]);
+  const min = Math.round(responseTime["Min"]);
+  const max = Math.round(responseTime["Max"]);
+  
   return (
     <div className="w-full rounded-lg flex-shrink-0 flex-grow mb-0">
       <link
@@ -15,7 +20,6 @@ const Statistics = () => {
       <section>
         <div>
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded ">
-            {/* <div class="px-6 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Response Time</div> */}
             <div className="block w-full overflow-x-auto">
               <div className="items-center bg-transparent w-full border-collapse">
                 <div className="">
@@ -29,22 +33,22 @@ const Statistics = () => {
                 <div className="flex justify-evenly">
                   <StatisticRow
                     metricName="95th Percentile"
-                    metricValue="723"
+                    metricValue={p95}
                     metricUnit="ms"
                   />
                   <StatisticRow
                     metricName="Average"
-                    metricValue="700"
+                    metricValue={average}
                     metricUnit="ms"
                   />
                   <StatisticRow
                     metricName="Min"
-                    metricValue="650"
+                    metricValue={min}
                     metricUnit="ms"
                   />
                   <StatisticRow
                     metricName="Max"
-                    metricValue="780"
+                    metricValue={max}
                     metricUnit="ms"
                   />
                 </div>
@@ -56,14 +60,5 @@ const Statistics = () => {
     </div>
   );
 };
-
-/*
-desired statistics:
-responseTime
-  average
-  min
-  max
-  p95
-*/
 
 export default Statistics;
