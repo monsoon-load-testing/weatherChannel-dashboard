@@ -39,6 +39,7 @@ const MainChart = ({
   return (
     <>
       <VictoryChart
+        key="Main VictoryChart"
         theme={VictoryTheme.material}
         domainPadding={20}
         padding={{ left: 100, right: 100, top: 50, bottom: 30 }}
@@ -49,7 +50,7 @@ const MainChart = ({
         containerComponent={
           <VictoryZoomVoronoiContainer
             allowZoom={false}
-            voronoiBlacklist={["ignore"]}
+            voronoiBlacklist={["ignore1", "ignore2", "ignore3", "ignore4"]}
             voronoiDimension="x"
             zoomDimension="x"
             zoomDomain={zoomDomain}
@@ -61,7 +62,7 @@ const MainChart = ({
           />
         }
       >
-        <VictoryAxis />
+        <VictoryAxis key="Response Time Axis" />
         {isActiveResponseTime && (
           <VictoryAxis
             dependentAxis
@@ -78,6 +79,7 @@ const MainChart = ({
 
         {isActiveConcurrentUsers && (
           <VictoryAxis
+            key="Concurrent Users Axis"
             dependentAxis
             tickValues={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
             tickFormat={(tickValue) => tickValue * maxConcurrentUsers}
@@ -92,6 +94,7 @@ const MainChart = ({
         )}
         {isActiveTransactionRate && (
           <VictoryAxis
+            key="Transaction Rate Axis"
             dependentAxis
             tickValues={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
             tickFormat={(tickValue) => tickValue * maxTransactionRate}
@@ -108,6 +111,7 @@ const MainChart = ({
         )}
         {isActivePassRatio && (
           <VictoryAxis
+            key="Pass Ratio Axis"
             dependentAxis
             tickValues={[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
             tickFormat={(tickValue) => tickValue * maxPassRatio}
@@ -125,7 +129,8 @@ const MainChart = ({
 
         {isActiveResponseTime && (
           <VictoryLine
-            name="ignore"
+            key="Response Time Line"
+            name="ignore1"
             style={{ data: { stroke: "tomato" } }}
             data={responseTime}
             x={"time"}
@@ -135,7 +140,7 @@ const MainChart = ({
 
         {isActiveResponseTime && (
           <VictoryScatter
-            name="Response Time"
+            key="Response Time Scatter"
             style={{ data: { fill: "tomato" } }}
             data={responseTime}
             x={"time"}
@@ -146,7 +151,8 @@ const MainChart = ({
 
         {isActiveConcurrentUsers && (
           <VictoryLine
-            name="ignore"
+            key="Concurrent Users Line"
+            name="ignore2"
             style={{ data: { stroke: "blue" } }}
             data={concurrentUsers}
             x={"time"}
@@ -156,7 +162,7 @@ const MainChart = ({
 
         {isActiveConcurrentUsers && (
           <VictoryScatter
-            name="Concurrent Users"
+            key="Concurrent Users Scatter"
             style={{ data: { fill: "blue" } }}
             data={concurrentUsers}
             x={"time"}
@@ -167,7 +173,8 @@ const MainChart = ({
 
         {isActiveTransactionRate && (
           <VictoryLine
-            name="ignore"
+            key="Transaction Rate Line"
+            name="ignore3"
             style={{ data: { stroke: "purple" } }}
             data={transactionRate}
             x={"time"}
@@ -177,7 +184,7 @@ const MainChart = ({
 
         {isActiveTransactionRate && (
           <VictoryScatter
-            name="Transaction Rate"
+            key="Transaction Rate Scatter"
             style={{ data: { fill: "purple" } }}
             data={transactionRate}
             x={"time"}
@@ -188,7 +195,8 @@ const MainChart = ({
 
         {isActivePassRatio && (
           <VictoryLine
-            name="ignore"
+            key="Pass Ratio Line"
+            name="ignore4"
             style={{ data: { stroke: "green" } }}
             data={passRatio}
             x={"time"}
@@ -198,7 +206,7 @@ const MainChart = ({
 
         {isActivePassRatio && (
           <VictoryScatter
-            name="Transaction Rate"
+            key="Pass Ratio Scatter"
             style={{ data: { fill: "green" } }}
             data={passRatio}
             x={"time"}
@@ -206,52 +214,6 @@ const MainChart = ({
             size={({ active }) => (active ? 4 : 1)}
           />
         )}
-
-        {/* {isActiveConcurrentUsers&&<VictoryGroup
-          color="tomato"
-          data={responseTime}
-          x={"time"}
-          y={(datum) => datum.value / maxResponseTime}
-        >
-          <VictoryLine/>
-          <VictoryScatter
-                  
-                  size={({ active }) => active ? 5 : 3}
-          />
-        </VictoryGroup>} */}
-
-        {/* {isActiveConcurrentUsers&&<VictoryGroup color="blue"
-          data={concurrentUsers}
-          x={"time"}
-          y={(datum) => datum.value / maxConcurrentUsers}
-        >
-          <VictoryLine/>
-          <VictoryScatter
-                  size={({ active }) => active ? 5 : 3}
-          />
-        </VictoryGroup>}
-
-        {isActiveTransactionRate&&<VictoryGroup color="purple"
-          data={transactionRate}
-          x={"time"}
-          y={(datum) => datum.value / maxTransactionRate}
-        >
-          <VictoryLine/>
-          <VictoryScatter
-                  size={({ active }) => active ? 5 : 3}
-          />
-        </VictoryGroup>}
-
-        {isActivePassRatio&&<VictoryGroup color="green"
-          data={passRatio}
-          x={"time"}
-          y={(datum) => datum.value / maxPassRatio}
-        >
-          <VictoryLine/>
-          <VictoryScatter
-                  size={({ active }) => active ? 5 : 3}
-          />
-        </VictoryGroup>} */}
       </VictoryChart>
     </>
   );

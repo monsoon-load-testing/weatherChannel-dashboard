@@ -1,5 +1,6 @@
-import axios from "axios";
-import * as routes from "../constants/ApiRoutes";
+// import axios from "axios";
+
+const axios = require("axios");
 
 function logError(errorResponse) {
   const response = errorResponse.response;
@@ -10,11 +11,7 @@ function logError(errorResponse) {
     console.error("Error: ", errorResponse);
   }
 }
-
-// export const GET_LIST_OF_STEPS = "/tests/:tableName/steps";
-// export const GET_TEST_DATASET = "/tests/:tableName";
-// export const GET_TEST_STATS = "/tests/:tableName/stats";
-const BASE_URL = "api/tests";
+const BASE_URL = "/api/tests";
 
 function unwrapData(response) {
   return response.data;
@@ -26,11 +23,36 @@ axios.defaults.headers.common["Accept"] = "application/json";
 const apiClient = {
   getListOfSteps(tableName, callback) {
     return axios
-      .get(`${BASE_URL}`)
+      .get(`${BASE_URL}/${tableName}/steps`)
+      .then(unwrapData)
+      .then(callback)
+      .catch(logError);
+  },
+
+  getTestDataset(tableName, callback) {
+    return axios
+      .get(`${BASE_URL}/${tableName}`)
+      .then(unwrapData)
+      .then(callback)
+      .catch(logError);
+  },
+
+  getTestStats(tableName, callback) {
+    return axios
+      .get(`${BASE_URL}/${tableName}/stats`)
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
 };
+
+// (async () => {
+//   const steps = await apiClient.getListOfSteps("downpour-test-1637014373298");
+//   console.log("Steps", steps);
+//   const dataset = await apiClient.getTestDataset("downpour-test-1637014373298");
+//   console.log("Dataset", dataset);
+//   const testStats = await apiClient.getTestStats("downpour-test-1637014373298");
+//   console.log("Stats", testStats);
+// })();
 
 export default apiClient;

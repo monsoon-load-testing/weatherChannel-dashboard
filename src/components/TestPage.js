@@ -1,37 +1,80 @@
 import { DraftChart } from "./DraftChart";
 import ChartContainer from "./ChartContainer";
 import Statistics from "./Statistics";
+import StepButton from "./StepButton";
+import { useParams } from "react-router";
+import apiClient from "../lib/ApiClient";
+import { useState, useEffect } from "react";
+
 const TestPage = () => {
+  const tableName = useParams().tableName;
+  /*
+  steps => array of step names
+  stats => nested object
+  dataset => nested object
+  
+  currentStep
+  currentStats
+  currentDataset
+  */
+  const [allSteps, setAllSteps] = useState([]);
+  const [allStats, setAllStats] = useState({});
+  const [allData, setAllData] = useState({});
+  const [currentStep, setCurrentStep] = useState("");
+  const [currentStats, setCurrentStats] = useState({});
+  const [currentData, setCurrentData] = useState({});
+
+  useEffect(() => {
+    const stepsPromise = apiClient.getListOfSteps(tableName);
+    const statsPromise = apiClient.getTestStats(tableName);
+    const datasetPromise = apiClient.getTestDataset(tableName);
+    Promise.all([stepsPromise, statsPromise, datasetPromise])
+      .then((data) => {
+        setAllSteps(data[0]);
+        setAllStats(data[1]);
+        setAllData(data[2]);
+        return data;
+      })
+      .then((data) => {
+        const steps = data[0];
+        const step1 = steps[0];
+        setCurrentStep(step1);
+      });
+  }, [setAllSteps, setAllStats, setAllData, setCurrentStep, tableName]);
+
+  useEffect(() => {
+    setCurrentStats(allStats[currentStep]);
+    setCurrentData(allData[currentStep]);
+  }, [currentStep, allStats, allData, setCurrentStats, setCurrentData]);
+
+  const clickHandler = (e) => {
+    e.preventDefault();
+    // select the key of the StepButton -> will match the key of allData and allStats
+  };
+
   return (
-    <div class="w-full bg-white relative flex overflow-hidden">
-      <div class="w-full h-full flex flex-col justify-between">
+    <div className="w-full bg-white relative flex overflow-hidden">
+      <div className="w-full h-full flex flex-col justify-between">
         {/* <!-- Header --> */}
-        <header class="h-16 w-full flex items-center relative justify-between px-5 space-x-10 bg-gray-900">
+        <header className="h-16 w-full flex items-center relative justify-between px-5 space-x-10 bg-gray-900">
           {/* <!-- Profile --> */}
-          <div class="h-10 w-15 flex flex-grow items-center justify-center bg-red-200 rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
-            <p class="text-center text-2xl">Step 1</p>
-          </div>
-          <div class="h-10 w-15 flex flex-grow items-center justify-center bg-red-200 rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
-            <p class="text-center text-2xl">Step 2</p>
-          </div>
-          <div class="h-10 w-15 flex flex-grow items-center justify-center bg-red-200 rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
-            <p class="text-center text-2xl">Step 3</p>
-          </div>
-          <div class="h-10 w-15 flex flex-grow items-center justify-center bg-red-200 rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
-            <p class="text-center text-2xl">Step 4</p>
-          </div>
-          <div class="h-10 w-15 flex flex-grow items-center justify-center bg-red-200 rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
-            <p class="text-center text-2xl">Step 5</p>
-          </div>
+          {allSteps.map((stepName) => (
+            <StepButton
+              key={stepName}
+              stepName={stepName}
+              clickHandler={clickHandler}
+              data-key={stepName}
+            />
+          ))}
         </header>
 
         {/* <!-- Main --> */}
-        <main class="max-w-full h-full flex relative overflow-y-hidden">
+        <main className="max-w-full h-full flex relative overflow-y-hidden">
           {/* <!-- Container --> */}
-          <div class="h-full w-full rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
+          <div className="h-full w-full rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
             {/* <!-- Container --> */}
             <Statistics />
-            {/* <div class="w-full h-full rounded-lg flex-shrink-0 flex-grow bg-gray-400">
+            {/* <div className="w-full h-full rounded-lg flex-shrink-0 flex-grow bg-gray-400">
               <DraftChart />
             </div> */}
             <ChartContainer />
@@ -41,5 +84,5 @@ const TestPage = () => {
     </div>
   );
 };
-
+// downpour-test-1637014373298
 export default TestPage;
