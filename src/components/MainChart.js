@@ -50,6 +50,7 @@ const MainChart = ({
         containerComponent={
           <VictoryZoomVoronoiContainer
             allowZoom={false}
+            allowPan={false}
             voronoiBlacklist={["ignore1", "ignore2", "ignore3", "ignore4"]}
             voronoiDimension="x"
             zoomDimension="x"
@@ -67,7 +68,7 @@ const MainChart = ({
           <VictoryAxis
             dependentAxis
             tickValues={[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
-            tickFormat={(tickValue) => tickValue * maxResponseTime}
+            tickFormat={(tickValue) => Math.round(tickValue * maxResponseTime)}
             axisLabelComponent={<VictoryLabel x={50} y={150} angle={-90} />}
             label={"Response Time"}
             style={{
@@ -82,7 +83,9 @@ const MainChart = ({
             key="Concurrent Users Axis"
             dependentAxis
             tickValues={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
-            tickFormat={(tickValue) => tickValue * maxConcurrentUsers}
+            tickFormat={(tickValue) =>
+              Math.round(tickValue * maxConcurrentUsers)
+            }
             axisLabelComponent={<VictoryLabel x={150} y={150} angle={-90} />}
             label={"Concurrent users"}
             style={{
@@ -97,7 +100,9 @@ const MainChart = ({
             key="Transaction Rate Axis"
             dependentAxis
             tickValues={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
-            tickFormat={(tickValue) => tickValue * maxTransactionRate}
+            tickFormat={(tickValue) =>
+              Math.round(tickValue * maxTransactionRate)
+            }
             offsetX={900}
             axisLabelComponent={
               <VictoryLabel x={900 - 50} y={150} angle={-90} />
@@ -114,7 +119,7 @@ const MainChart = ({
             key="Pass Ratio Axis"
             dependentAxis
             tickValues={[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]}
-            tickFormat={(tickValue) => tickValue * maxPassRatio}
+            tickFormat={(tickValue) => Math.round(tickValue * maxPassRatio)}
             offsetX={900}
             axisLabelComponent={
               <VictoryLabel x={900 + 50} y={150} angle={-90} />

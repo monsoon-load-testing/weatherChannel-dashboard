@@ -6,24 +6,31 @@ import { useParams } from "react-router";
 import apiClient from "../lib/ApiClient";
 import { useState, useEffect } from "react";
 
+const formatData = (rawData) => {
+  const data = { ...rawData };
+  // const timeOrigin = new Date(Object.values(Object.values(data)[0])[0][0].time);
+  const timeOrigin = 0;
+  Object.values(data).forEach((step) => {
+    Object.values(step).forEach((metric) => {
+      metric.forEach((datum) => {
+        const miliseconds = new Date(datum.time) - timeOrigin;
+        datum.time = new Date(miliseconds);
+      });
+    });
+  });
+  return data;
+};
+
 const TestPage = () => {
   const tableName = useParams().tableName;
-  /*
-  steps => array of step names
-  stats => nested object
-  dataset => nested object
-  
-  currentStep
-  currentStats
-  currentDataset
-  */
+  // const emptyMetric = [{ time: "", metric: "", unit: "", value: "" }];
+
   const [allSteps, setAllSteps] = useState([]);
   const [allStats, setAllStats] = useState({});
   const [allData, setAllData] = useState({});
   const [currentStep, setCurrentStep] = useState("");
   const [currentStats, setCurrentStats] = useState({});
   const [currentData, setCurrentData] = useState({});
-
   useEffect(() => {
     const stepsPromise = apiClient.getListOfSteps(tableName);
     const statsPromise = apiClient.getTestStats(tableName);
@@ -32,7 +39,7 @@ const TestPage = () => {
       .then((data) => {
         setAllSteps(data[0]);
         setAllStats(data[1]);
-        setAllData(data[2]);
+        setAllData(formatData(data[2]));
         return data;
       })
       .then((data) => {
@@ -43,13 +50,13 @@ const TestPage = () => {
   }, [setAllSteps, setAllStats, setAllData, setCurrentStep, tableName]);
 
   useEffect(() => {
-    setCurrentStats(allStats[currentStep]);
-    setCurrentData(allData[currentStep]);
+    setCurrentStats(allStats[currentStep] || {});
+    setCurrentData(allData[currentStep] || {});
   }, [currentStep, allStats, allData, setCurrentStats, setCurrentData]);
 
   const clickHandler = (e) => {
     e.preventDefault();
-    // select the key of the StepButton -> will match the key of allData and allStats
+    setCurrentStep(e.target.textContent);
   };
 
   return (
@@ -74,10 +81,9 @@ const TestPage = () => {
           <div className="h-full w-full rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
             {/* <!-- Container --> */}
             <Statistics />
-            {/* <div className="w-full h-full rounded-lg flex-shrink-0 flex-grow bg-gray-400">
-              <DraftChart />
-            </div> */}
-            <ChartContainer />
+            {JSON.stringify(currentData) !== "{}" && (
+              <ChartContainer {...currentData} />
+            )}
           </div>
         </main>
       </div>
