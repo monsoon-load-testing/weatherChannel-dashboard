@@ -9,12 +9,13 @@ import { useState, useEffect } from "react";
 const formatData = (rawData) => {
   const data = { ...rawData };
   // const timeOrigin = new Date(Object.values(Object.values(data)[0])[0][0].time);
-  const timeOrigin = 0;
+  // const timeOrigin = 0;
   Object.values(data).forEach((step) => {
     Object.values(step).forEach((metric) => {
       metric.forEach((datum) => {
-        const miliseconds = new Date(datum.time) - timeOrigin;
-        datum.time = new Date(miliseconds);
+        // const miliseconds = new Date(datum.time) - timeOrigin;
+        const offset = new Date(datum.time).getTimezoneOffset() * 60 * 1000;
+        datum.time = new Date(datum.time) - offset;
       });
     });
   });
@@ -31,6 +32,7 @@ const TestPage = () => {
   const [currentStep, setCurrentStep] = useState("");
   const [currentStats, setCurrentStats] = useState({});
   const [currentData, setCurrentData] = useState({});
+  
   useEffect(() => {
     const stepsPromise = apiClient.getListOfSteps(tableName);
     const statsPromise = apiClient.getTestStats(tableName);
