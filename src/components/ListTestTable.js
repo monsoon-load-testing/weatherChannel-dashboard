@@ -1,6 +1,22 @@
 import ListTest from "./ListTest";
+import apiClient from "../lib/ApiClient";
+import { useState, useEffect } from 'react';
 
 const ListTestTable = () => {
+  const [tables, setTables] = useState([]);
+  
+  useEffect(() => {
+    const tablePromise = apiClient.getListOfTables();
+    Promise.resolve(tablePromise)
+    .then(data => {
+      const temp = data;
+      return temp
+    })
+    .then(data => {
+      setTables(data)
+    });
+  }, [setTables])
+
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -27,14 +43,9 @@ const ListTestTable = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                <ListTest
-                  testName="Test1"
-                  testDate="Nov 14, 2021: 12:11:00 PM"
-                />
-                <ListTest
-                  testName="Test2"
-                  testDate="Nov 14, 2021: 12:15:21 PM"
-                />
+                {JSON.stringify(tables) !== [] && (
+                  tables.map(table => <ListTest key={table.testName} testName={table.testName} testDate={table.date} />)
+                )}
               </tbody>
             </table>
           </div>

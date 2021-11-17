@@ -44,6 +44,15 @@ const apiClient = {
       .then(callback)
       .catch(logError);
   },
+  
+  getListOfTables(tableName, callback) {
+    return axios
+      .get(`${BASE_URL}`)
+      .then(unwrapData)
+      .then(callback)
+      .catch(logError);
+  },
+  
 };
 
 // (async () => {
