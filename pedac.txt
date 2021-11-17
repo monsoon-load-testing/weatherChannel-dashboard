@@ -40,5 +40,5 @@ BACKEND
     GET all aggregated metrics from timestream for the specified table
 
 Next steps
-1. Endpoints and communication with Timestream
+1. Endpoints and communication with Timestream - done
 2. Components

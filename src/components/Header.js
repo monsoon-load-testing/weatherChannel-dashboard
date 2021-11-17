@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div class="flex-1 flex flex-col">
-		<nav class="px-4 flex justify-between bg-white h-16 border-b-2">
+		<nav class="px-4 flex justify-between bg-white h-16 border-b-2 text-4xl">
 
 			{/* <!-- top bar left --> */}
 			<ul class="flex items-center">

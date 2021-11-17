@@ -36,7 +36,6 @@ export function DraftChart() {
     { a: new Date(2011, 1, 1), b: 30, c: "users" },
     { a: new Date(2015, 1, 1), b: 2, c: "users" },
   ];
-
   const [maximaData2, maximaData3] = [data2, data3].map((dataset) =>
     Math.max(...dataset.map((d) => d.b))
   );
