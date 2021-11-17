@@ -81,7 +81,7 @@ const ChartContainer = () => {
   })
 
   return (
-    <div className="w-full h-full rounded-lg flex-shrink-0 flex-grow bg-gray-400">
+    <div className="w-full rounded-lg flex-shrink-0 flex-grow bg-gray-400">
       <div className="flex justify-center">
         <div className="w-4/5 flex flex-col">
           <Legend active={active} setActive={setActive} />
