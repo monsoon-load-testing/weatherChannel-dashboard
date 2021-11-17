@@ -2,7 +2,7 @@ import StatisticRow from "./StatisticRow"
 
 const Statistics = () => {
   return (
-    <div className="w-full rounded-lg flex-shrink-0 flex-grow bg-gray-400 mb-0">
+    <div className="w-full rounded-lg flex-shrink-0 flex-grow mb-0">
       <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css" />
       <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
 

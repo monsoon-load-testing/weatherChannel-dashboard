@@ -3,7 +3,7 @@ import ChartContainer from "./ChartContainer";
 import Statistics from "./Statistics";
 const TestPage = () => {
   return (
-    <div class="h-screen w-full bg-white relative flex overflow-hidden">
+    <div class="w-full bg-white relative flex overflow-hidden">
       <div class="w-full h-full flex flex-col justify-between">
         {/* <!-- Header --> */}
         <header class="h-16 w-full flex items-center relative justify-between px-5 space-x-10 bg-gray-900">
@@ -28,7 +28,7 @@ const TestPage = () => {
         {/* <!-- Main --> */}
         <main class="max-w-full h-full flex relative overflow-y-hidden">
           {/* <!-- Container --> */}
-          <div class="h-full w-full m-4 flex flex-wrap items-start justify-start rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
+          <div class="h-full w-full rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
             {/* <!-- Container --> */}
             <Statistics />
             {/* <div class="w-full h-full rounded-lg flex-shrink-0 flex-grow bg-gray-400">
