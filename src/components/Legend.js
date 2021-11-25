@@ -3,7 +3,7 @@ import LegendButton from "./LegendButton";
 const Legend = ({ active, setActive }) => {
   const activeHandler = (e) => {
     e.preventDefault();
-    const metric = e.target.dataset.metric;
+    const metric = e.target.closest('LI').dataset.metric;
     setActive({ ...active, [metric]: !active[metric] });
   };
 
