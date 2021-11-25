@@ -95,15 +95,6 @@ const TestPage = () => {
               data-key={stepName}
             />
           ))}
-          {/* temp */}
-          {allSteps.map((stepName) => (
-            <StepButton
-              key={stepName}
-              stepName={"Second step"}
-              clickHandler={clickHandler}
-              data-key={stepName}
-            />
-          ))}
         </header>
 
         {/* <!-- Main --> */}
