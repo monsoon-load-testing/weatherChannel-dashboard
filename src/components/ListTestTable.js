@@ -48,8 +48,10 @@ const ListTestTable = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {JSON.stringify(tables) !== [] && (
-                  tables.map(table => {
-
+                  tables.sort((a, b) => {
+                    return a.date > b.date ? -1 : 1
+                  })
+                  .map(table => {
                     let keyName = `${table.testName}-${table.date}`
                     return (
                       <ListTest key={keyName} url={keyName} testName={table.testName} testDate={table.date} clickHandler={clickHandler} />
