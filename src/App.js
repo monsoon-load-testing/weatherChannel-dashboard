@@ -20,10 +20,4 @@ function App() {
   );
 }
 
-{
-  /* <Route path={`/bins/${binId}`}>
-  <BinPage binId={binId} handleGoToHome={handleGoToHome}/>
-</Route> */
-}
-
 export default App;

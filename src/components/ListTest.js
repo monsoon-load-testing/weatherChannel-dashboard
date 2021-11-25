@@ -6,18 +6,18 @@ const ListTest = (props) => {
 
   const clickHandler = props.clickHandler
   return (
-    <tr data-url={url} onClick={clickHandler}>
+    <tr data-url={url} onClick={clickHandler} className="cursor-pointer">
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="flex items-center">
+        <div className="items-center">
           <div className="ml-4">
-            <div className="text-sm font-medium text-gray-900">
+            <div className="text-xl text-center font-medium text-gray-900">
               {props.testName}
             </div>
           </div>
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{dateString}: {dateTime}</div>
+        <div className="text-xl text-center text-gray-900">{dateString}: {dateTime}</div>
       </td>
     </tr>
   );

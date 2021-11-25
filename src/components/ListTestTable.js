@@ -25,7 +25,7 @@ const ListTestTable = () => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col max-w-full">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -34,18 +34,15 @@ const ListTestTable = () => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-center text-xl font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Test Name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-center text-xl font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Date
-                  </th>
-                  <th scope="col" className="relative px-6 py-3">
-                    <span className="sr-only">Delete</span>
                   </th>
                 </tr>
               </thead>
