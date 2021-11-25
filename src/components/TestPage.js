@@ -65,7 +65,7 @@ const TestPage = () => {
     <div className="w-full bg-white relative flex overflow-hidden">
       <div className="w-full h-full flex flex-col justify-between">
         {/* <!-- Header --> */}
-        <header className="h-16 w-full flex items-center relative justify-between px-5 space-x-10 bg-gray-900">
+        <header className="h-16 w-full flex items-center relative justify-between px-5 space-x-10 bg-gray-900 pl-0 pr-0">
           {/* <!-- Profile --> */}
           {allSteps.map((stepName) => (
             <StepButton
@@ -89,7 +89,7 @@ const TestPage = () => {
         {/* <!-- Main --> */}
         <main className="max-w-full h-full flex relative overflow-y-hidden">
           {/* <!-- Container --> */}
-          <div className="h-full w-full rounded-tl grid-flow-col auto-cols-max gap-4 overflow-y-scroll">
+          <div className="h-full w-full rounded-tl grid-flow-col auto-cols-max overflow-y-scroll pl-4">
             {/* <!-- Container --> */}
             {JSON.stringify(currentStats) !== "{}" && (
               <Statistics {...currentStats} />

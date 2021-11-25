@@ -14,7 +14,7 @@ const Legend = ({ active, setActive }) => {
     isActivePassRatio,
   } = active;
   return (
-    <div className="border bg-gray-500 mt-2">
+    <div className="mt-2">
       <p className="text-center">LEGEND</p>
       <ul className="flex justify-evenly">
         <li
