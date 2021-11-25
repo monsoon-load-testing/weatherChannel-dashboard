@@ -1,4 +1,3 @@
-import { DraftChart } from "./DraftChart";
 import ChartContainer from "./ChartContainer";
 import Statistics from "./Statistics";
 import StepButton from "./StepButton";
@@ -33,6 +32,27 @@ const TestPage = () => {
   const [currentStats, setCurrentStats] = useState({});
   const [currentData, setCurrentData] = useState({});
   
+  const refreshDataHandler = (e) => {
+    e.preventDefault();
+    const stepsPromise = apiClient.getListOfSteps(tableName);
+    const statsPromise = apiClient.getTestStats(tableName);
+    const datasetPromise = apiClient.getTestDataset(tableName);
+    Promise.all([stepsPromise, statsPromise, datasetPromise])
+    .then((data) => {
+      setAllSteps(data[0]);
+      setAllStats(data[1]);
+      setAllData(formatData(data[2]));
+      return data;
+    })
+    .then((data) => {
+      const steps = data[0];
+      const step1 = steps[0];
+      setCurrentStep(step1);
+      setCurrentStats(allStats[currentStep] || {});
+      setCurrentData(allData[currentStep] || {});
+    });
+  }
+
   useEffect(() => {
     const stepsPromise = apiClient.getListOfSteps(tableName);
     const statsPromise = apiClient.getTestStats(tableName);
@@ -95,7 +115,7 @@ const TestPage = () => {
               <Statistics {...currentStats} />
             )}
             {JSON.stringify(currentData) !== "{}" && (
-              <ChartContainer {...currentData} />
+              <ChartContainer refreshDataHandler={refreshDataHandler} {...currentData} />
             )}
           </div>
         </main>
