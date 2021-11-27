@@ -41,7 +41,7 @@ const ChartContainer = ({
     responseTime[responseTime.length - 1].time,
   ];
   const [zoomDomain, setZoomDomain] = useState({
-    x: [startTime, endTime],
+    x: [startTime - 15000, endTime + 15000],
     y: [0, 1.1],
   });
 
@@ -57,7 +57,12 @@ const ChartContainer = ({
       <div className="flex justify-center">
         <div className="w-4/5 flex flex-col border bg-gray-500 mt-2">
           <div className="absolute">
-            <button className="h-10 min-w-min border rounded-lg" onClick={refreshDataHandler}>REFRESH</button>
+            <button
+              className="h-10 min-w-min border rounded-lg"
+              onClick={refreshDataHandler}
+            >
+              REFRESH
+            </button>
           </div>
           <Legend active={active} setActive={setActive} />
           <MainChart

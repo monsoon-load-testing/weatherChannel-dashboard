@@ -37,7 +37,7 @@ const WindowChart = ({
       <VictoryChart
         key="Window VictoryChart"
         theme={VictoryTheme.material}
-        domainPadding={20}
+        domainPadding={{ x: 60 }}
         padding={{ left: 100, right: 100, top: 10, bottom: 50 }}
         width={1000}
         height={110}
@@ -59,7 +59,7 @@ const WindowChart = ({
           <VictoryLine
             key="Window Response Time line"
             name="Response Time"
-            style={{ data: { stroke: "tomato" } }}
+            style={{ data: { stroke: "#1D0D5C" } }}
             data={responseTime}
             x={"time"}
             y={(datum) => datum.value / maxResponseTime}
@@ -69,7 +69,7 @@ const WindowChart = ({
         {isActiveConcurrentUsers && (
           <VictoryLine
             key="Window Concurrent Users Line"
-            style={{ data: { stroke: "blue" } }}
+            style={{ data: { stroke: "#916cbf" } }}
             data={concurrentUsers}
             x={"time"}
             y={(datum) => datum.value / maxConcurrentUsers}
@@ -79,7 +79,7 @@ const WindowChart = ({
         {isActiveTransactionRate && (
           <VictoryLine
             key="Window Transaction Rate Line"
-            style={{ data: { stroke: "purple" } }}
+            style={{ data: { stroke: "#649CD9" } }}
             data={transactionRate}
             x={"time"}
             y={(datum) => datum.value / maxTransactionRate}
@@ -89,7 +89,7 @@ const WindowChart = ({
         {isActivePassRatio && (
           <VictoryLine
             key="Window Pass Ratio Line"
-            style={{ data: { stroke: "green" } }}
+            style={{ data: { stroke: "#CC6ACC" } }}
             data={passRatio}
             x={"time"}
             y={(datum) => datum.value / maxPassRatio}
