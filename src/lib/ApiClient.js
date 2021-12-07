@@ -1,5 +1,3 @@
-// import axios from "axios";
-
 const axios = require("axios");
 
 function logError(errorResponse) {
@@ -16,7 +14,7 @@ const BASE_URL = "/api/tests";
 function unwrapData(response) {
   return response.data;
 }
-// d
+
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.headers.common["Accept"] = "application/json";
 
@@ -55,12 +53,14 @@ const apiClient = {
   
 };
 
+// IIFE to test shape of test from db
 // (async () => {
-//   const steps = await apiClient.getListOfSteps("downpour-test-1637014373298");
+//   const db = "downpour-test-1637014373298"
+//   const steps = await apiClient.getListOfSteps(db);
 //   console.log("Steps", steps);
-//   const dataset = await apiClient.getTestDataset("downpour-test-1637014373298");
+//   const dataset = await apiClient.getTestDataset(db);
 //   console.log("Dataset", dataset);
-//   const testStats = await apiClient.getTestStats("downpour-test-1637014373298");
+//   const testStats = await apiClient.getTestStats(db);
 //   console.log("Stats", testStats);
 // })();
 
