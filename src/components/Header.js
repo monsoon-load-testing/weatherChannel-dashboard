@@ -1,24 +1,22 @@
+import logo from "../logos/svgs/color/logo.svg"
+
 const Header = () => {
   return (
     <div className="flex-1 flex flex-col">
-      <nav className="px-4 flex justify-between bg-indigo h-16 border-b-2 text-4xl">
+      <nav className="px-4 flex justify-center bg-indigo h-24 text-4xl relative">
         {/* <!-- top bar left --> */}
-        <ul className="flex items-center">
+        <ul className="flex items-center absolute bottom-0 left-0">
           {/* <!-- add button --> */}
-          <li className="h-6 w-6">
-            <img
-              className="h-full w-full mx-auto"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/512px-Svelte_Logo.svg.png"
-              alt="monsoon logo"
-            />
+          <li className="h-20 w-20">
+            <img className="h-full w-full mx-auto" src={logo} alt="the monsoon logo"/>
           </li>
         </ul>
 
         <ul className="flex items-center">
           {/* <!-- add button --> */}
           <li>
-            <h1 className="pl-8 lg:pl-0 text-cornFlowerBlue">
-              Monsoon Weather Channel
+            <h1 className="pl-8 lg:pl-0 text-monsoonWhite">
+              WEATHER CHANNEL
             </h1>
           </li>
         </ul>

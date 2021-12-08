@@ -1,11 +1,11 @@
-const StepButton = ({ stepName, clickHandler }) => {
+const StepButton = ({ stepName, clickHandler, index }) => {
   return (
-    <div
-      className="h-10 w-15 flex flex-grow items-center justify-center bg-cornFlowerBlue rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white"
+    <button
+      className={`h-10 w-15 flex flex-grow items-center justify-center bg-indigo outline-none cursor-pointer ${index === 0 ? 'active' : ''}`}
       onClick={clickHandler}
     >
-      <p className="text-center text-2xl text-indigo">{stepName}</p>
-    </div>
+      <p className="text-center text-2xl text-monsoonWhite">{stepName}</p>
+    </button>
   );
 };
 

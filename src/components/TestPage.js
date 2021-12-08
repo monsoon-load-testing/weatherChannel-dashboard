@@ -78,6 +78,14 @@ const TestPage = () => {
 
   const clickHandler = (e) => {
     e.preventDefault();
+    const button = e.target.closest('button')
+    const children = button.closest('header').childNodes
+    children.forEach(child => {
+      if (child.classList.contains('active')) {
+        child.classList.remove('active')
+      }
+    })
+    button.classList.add('active')
     setCurrentStep(e.target.textContent);
   };
 
@@ -85,14 +93,15 @@ const TestPage = () => {
     <div className="w-full bg-white relative flex overflow-hidden">
       <div className="w-full h-full flex flex-col justify-between">
         {/* <!-- Header --> */}
-        <header className="h-16 w-full flex items-center relative justify-between px-5 space-x-10 bg-gray-900 pl-0 pr-0">
+        <header className="w-full flex items-center relative justify-between px-5 bg-gray-900 pl-0 pr-0 bg-monsoonWhite">
           {/* <!-- Profile --> */}
-          {allSteps.map((stepName) => (
+          {allSteps.map((stepName, index) => (
             <StepButton
               key={stepName}
               stepName={stepName}
               clickHandler={clickHandler}
               data-key={stepName}
+              index={index}
             />
           ))}
         </header>

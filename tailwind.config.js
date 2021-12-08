@@ -16,6 +16,9 @@ module.exports = {
       monsoonGreen: {
         DEFAULT: 'rgba(110, 231, 183, var(--tw-bg-opacity))'
       },
+      monsoonWhite: {
+        DEFAULT: '#FFFFFF'
+      }
     },
   },
   variants: {
