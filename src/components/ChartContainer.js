@@ -16,6 +16,7 @@ import Legend from "./Legend";
 import MainChart from "./MainChart";
 import WindowChart from "./WindowChart";
 import { useState } from "react";
+import logo from "../logos/svgs/refresh.svg";
 
 // {responseTime, concurrentUsers, transactionRate, passRatio }
 const ChartContainer = ({
@@ -61,7 +62,7 @@ const ChartContainer = ({
               className="h-10 min-w-min border rounded-lg"
               onClick={refreshDataHandler}
             >
-              REFRESH
+              <img className="h-full w-full mx-auto" src={logo} alt="refresh icon" />
             </button>
           </div>
           <Legend active={active} setActive={setActive} />
