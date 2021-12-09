@@ -6,7 +6,7 @@ const ListTest = (props) => {
 
   const clickHandler = props.clickHandler;
   return (
-    <tr data-url={url} onClick={clickHandler} className="cursor-pointer">
+    <tr data-url={url} onClick={clickHandler} className="cursor-pointer ">
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="items-center">
           <div className="ml-4">

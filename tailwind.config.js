@@ -6,31 +6,35 @@ module.exports = {
       raleway: ['"Raleway-SemiBold"'],
       openSans: ['"OpenSans-Regular"'],
     },
-    extend: {},
-    colors: {
-      indigo: {
-        DEFAULT: "#1D0D5C",
+    extend: {
+      height: {
+        800: "700px",
       },
-      mediumPurple: {
-        DEFAULT: "#916cbf",
-      },
-      cornFlowerBlue: {
-        DEFAULT: "#649CD9",
-      },
-      monsoonGreen: {
-        DEFAULT: "rgba(110, 231, 183, var(--tw-bg-opacity))",
-      },
-      monsoonWhite: {
-        DEFAULT: "#FFFFFF",
-      },
-      monsoonPink: {
-        DEFAULT: "#CC6ACC",
-      },
-      monsoonBlack: {
-        DEFAULT: "#000000",
-      },
-      monsoonGrey: {
-        DEFAULT: "#9C9C9C",
+      colors: {
+        indigo: {
+          DEFAULT: "#1D0D5C",
+        },
+        mediumPurple: {
+          DEFAULT: "#916cbf",
+        },
+        cornFlowerBlue: {
+          DEFAULT: "#649CD9",
+        },
+        monsoonGreen: {
+          DEFAULT: "rgba(110, 231, 183, var(--tw-bg-opacity))",
+        },
+        monsoonWhite: {
+          DEFAULT: "#FFFFFF",
+        },
+        monsoonPink: {
+          DEFAULT: "#CC6ACC",
+        },
+        monsoonBlack: {
+          DEFAULT: "#000000",
+        },
+        monsoonGrey: {
+          DEFAULT: "#9C9C9C",
+        },
       },
     },
   },
