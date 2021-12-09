@@ -1,18 +1,13 @@
-const LegendButton = ({ checked }) => {
+const LegendButton = ({ checked, activeColor }) => {
+  // let color = checked ? activeColor : "bg-white";
+  let color = checked ? activeColor : "bg-white";
   return (
-    <div className="ml-2">
-      <input type="checkbox" name="toggle" class="hidden" />
-      <label
-        className="relative w-12 h-6 flex select-none cursor-pointer"
-        for="toggle"
-      >
-
-        <span
-          className={"h-6 w-6 border-2 absolute z-10 rounded-full transition-transform duration-300 ease-in-out flex justify-center items-center border-indigo" + (checked ? " bg-monsoonGreen" : " bg-white")}
-        ></span>
-      </label>
+    <div className="ml-2 w-10 flex justify-center content-center items-center">
+      <span
+        className={`h-5 w-5 border-2 flex z-10  rounded-full transition-transform duration-300 ease-in-out border-indigo ${color}`}
+      ></span>
     </div>
-  )
-}
+  );
+};
 
-export default LegendButton
+export default LegendButton;

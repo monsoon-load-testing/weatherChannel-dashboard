@@ -53,6 +53,13 @@ const ChartContainer = ({
     isActivePassRatio: true,
   });
 
+  const legendColors = {
+    responseTime: "bg-indigo",
+    concurrentUsers: "bg-mediumPurple",
+    transactionRate: "bg-cornFlowerBlue",
+    passRatio: "bg-monsoonPink",
+  };
+
   return (
     <div className="w-full rounded-lg flex-shrink-0 flex-grow mt-2">
       <div className="flex justify-center">
@@ -62,10 +69,18 @@ const ChartContainer = ({
               className="h-10 min-w-min border rounded-lg"
               onClick={refreshDataHandler}
             >
-              <img className="h-full w-full mx-auto" src={logo} alt="refresh icon" />
+              <img
+                className="h-full w-full mx-auto"
+                src={logo}
+                alt="refresh icon"
+              />
             </button>
           </div>
-          <Legend active={active} setActive={setActive} />
+          <Legend
+            active={active}
+            setActive={setActive}
+            activeColors={legendColors}
+          />
           <MainChart
             responseTime={responseTime}
             maxResponseTime={maxResponseTime}
