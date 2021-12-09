@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <div className="w-auto m-10 mt-0">
       <Header />
       <Routes>
         <Route path="/">
@@ -16,7 +16,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </>
+    </div>
   );
 }
 

@@ -70,7 +70,7 @@ const ChartContainer = ({
   return (
     <div className="w-full rounded-lg flex-shrink-0 flex-grow mt-2">
       <div className="flex justify-center">
-        <div className="w-4/5 flex flex-col border bg-gray-500 mt-2">
+        <div className="w-full flex flex-col  mt-2 p-2">
           <div className="absolute">
             <button
               className="h-10 min-w-min border rounded-lg"
