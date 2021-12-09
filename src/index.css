@@ -4,8 +4,9 @@
 @tailwind utilities;
 
 .active {
-  background-color: #649cd9;
-  /* background-color: #916cbf; */
+  /* background-color: #649cd9; */
+  /* color: #649cd9; */
+  background-color: #916cbf;
 }
 
 .cropped {

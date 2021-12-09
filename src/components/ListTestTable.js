@@ -1,28 +1,28 @@
 import ListTest from "./ListTest";
 import apiClient from "../lib/ApiClient";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
 const ListTestTable = () => {
   const [tables, setTables] = useState([]);
-  
+
   useEffect(() => {
     const tablePromise = apiClient.getListOfTables();
     Promise.resolve(tablePromise)
-    .then(data => {
-      const temp = data;
-      return temp
-    })
-    .then(data => {
-      setTables(data)
-    });
-  }, [setTables])
+      .then((data) => {
+        const temp = data;
+        return temp;
+      })
+      .then((data) => {
+        setTables(data);
+      });
+  }, [setTables]);
 
   const navigate = useNavigate();
   const clickHandler = (e) => {
     e.preventDefault();
-    navigate(`/tests/${e.target.closest('tr').dataset.url}/`)
-  }
+    navigate(`/tests/${e.target.closest("tr").dataset.url}/`);
+  };
 
   return (
     <div className="flex flex-col max-w-full">
@@ -47,17 +47,23 @@ const ListTestTable = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {JSON.stringify(tables) !== [] && (
-                  tables.sort((a, b) => {
-                    return a.date > b.date ? -1 : 1
-                  })
-                  .map(table => {
-                    let keyName = `${table.testName}-${table.date}`
-                    return (
-                      <ListTest key={keyName} url={keyName} testName={table.testName} testDate={table.date} clickHandler={clickHandler} />
-                    )
-                  })
-                )}
+                {JSON.stringify(tables) !== [] &&
+                  tables
+                    .sort((a, b) => {
+                      return a.date > b.date ? -1 : 1;
+                    })
+                    .map((table) => {
+                      let keyName = `${table.testName}-${table.date}`;
+                      return (
+                        <ListTest
+                          key={keyName}
+                          url={keyName}
+                          testName={table.testName}
+                          testDate={table.date}
+                          clickHandler={clickHandler}
+                        />
+                      );
+                    })}
               </tbody>
             </table>
           </div>

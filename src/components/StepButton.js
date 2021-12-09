@@ -1,7 +1,8 @@
-const StepButton = ({ stepName, clickHandler, index }) => {
+const StepButton = ({ stepName, clickHandler, index, lastStepIdx }) => {
+  let borderRight = index === lastStepIdx ? "" : "border-r-2";
   return (
     <button
-      className={`h-10 w-15 flex flex-grow items-center justify-center border-2 border-t-0  border-cornFlowerBlue bg-indigo outline-none cursor-pointer ${
+      className={`h-10 w-15 flex flex-1 items-center justify-center border-b-2 ${borderRight}  border-mediumPurple bg-indigo focus:outline-none cursor-pointer ${
         index === 0 ? "active" : ""
       }`}
       onClick={clickHandler}

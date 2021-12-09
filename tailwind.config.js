@@ -26,6 +26,12 @@ module.exports = {
       monsoonPink: {
         DEFAULT: "#CC6ACC",
       },
+      monsoonBlack: {
+        DEFAULT: "#000000",
+      },
+      monsoonGrey: {
+        DEFAULT: "#9C9C9C",
+      },
     },
   },
   variants: {

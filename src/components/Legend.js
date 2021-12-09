@@ -14,8 +14,8 @@ const Legend = ({ active, setActive, activeColors }) => {
     isActivePassRatio,
   } = active;
   return (
-    <div className="mt-2">
-      <ul className="flex justify-evenly">
+    <div className="mt-2 inline-block w-11/12">
+      <ul className="flex justify-evenly align-middle items-center">
         <li
           onClick={activeHandler}
           className="text-left cursor-pointer flex font-openSans"

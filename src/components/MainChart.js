@@ -38,7 +38,7 @@ const MainChart = ({
   } = active;
   const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
   return (
-    <>
+    <div className="pl-4 pr-6">
       <VictoryChart
         key="Main VictoryChart"
         theme={VictoryTheme.material}
@@ -302,7 +302,7 @@ const MainChart = ({
           />
         )}
       </VictoryChart>
-    </>
+    </div>
   );
 };
 

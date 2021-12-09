@@ -90,10 +90,10 @@ const TestPage = () => {
   };
 
   return (
-    <div className="w-full bg-white relative flex overflow-hidden border-2 rounded-lg border-cornFlowerBlue">
+    <div className="w-full bg-white relative flex overflow-hidden border-2 rounded-lg border-mediumPurple">
       <div className="w-full h-full flex flex-col justify-between">
         {/* <!-- Header --> */}
-        <header className="w-full flex items-center relative justify-between px-5 bg-gray-900 pl-0 pr-0 bg-monsoonWhite">
+        <header className="w-full flex items-center relative justify-between px-0  pl-0 pr-0 bg-monsoonWhite">
           {/* <!-- Profile --> */}
           {allSteps.map((stepName, index) => (
             <StepButton
@@ -102,6 +102,7 @@ const TestPage = () => {
               clickHandler={clickHandler}
               data-key={stepName}
               index={index}
+              lastStepIdx={allSteps.length - 1}
             />
           ))}
         </header>
