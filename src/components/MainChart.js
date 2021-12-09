@@ -28,6 +28,7 @@ const MainChart = ({
   zoomDomain,
   setZoomDomain,
   active,
+  colors,
 }) => {
   const {
     isActiveResponseTime,
@@ -96,7 +97,7 @@ const MainChart = ({
                 y={50}
                 angle={0}
                 style={{
-                  fill: "#1D0D5C",
+                  fill: colors.responseTime,
                   fontSize: 16,
                 }}
               />
@@ -106,7 +107,7 @@ const MainChart = ({
               grid: { strokeWidth: 0 },
               ticks: { padding: -5, strokeWidth: 0 },
               axis: { stroke: "black" },
-              tickLabels: { fill: "#1D0D5C", fontWeight: "bold" },
+              tickLabels: { fill: colors.responseTime, fontWeight: "bold" },
             }}
           />
         )}
@@ -124,7 +125,7 @@ const MainChart = ({
                 x={125}
                 y={50}
                 angle={0}
-                style={{ fill: "#916cbf", fontSize: 16 }}
+                style={{ fill: colors.concurrentUsers, fontSize: 16 }}
               />
             }
             label={"users"}
@@ -133,7 +134,7 @@ const MainChart = ({
               grid: { strokeWidth: 0 },
               axis: { stroke: "black" },
               tickLabels: {
-                fill: "#916cbf",
+                fill: colors.concurrentUsers,
                 fontWeight: "bold",
               },
             }}
@@ -154,7 +155,7 @@ const MainChart = ({
                 x={900 + 22}
                 y={50}
                 angle={0}
-                style={{ fill: "#649CD9", fontSize: 16 }}
+                style={{ fill: colors.transactionRate, fontSize: 16 }}
               />
             }
             label={"TPM"}
@@ -162,7 +163,7 @@ const MainChart = ({
               grid: { strokeWidth: 0 },
               ticks: { padding: -50, strokeWidth: 0 },
               axis: { stroke: "black" },
-              tickLabels: { fill: "#649CD9", fontWeight: "bold" },
+              tickLabels: { fill: colors.transactionRate, fontWeight: "bold" },
             }}
           />
         )}
@@ -178,7 +179,7 @@ const MainChart = ({
                 x={900 - 20}
                 y={50}
                 angle={0}
-                style={{ fill: "#CC6ACC", fontSize: 16 }}
+                style={{ fill: colors.passRatio, fontSize: 16 }}
               />
             }
             label={"%"}
@@ -186,7 +187,7 @@ const MainChart = ({
               grid: { strokeWidth: 0 },
               ticks: { padding: 0, strokeWidth: 0 },
               axis: { stroke: "black" },
-              tickLabels: { fill: "#CC6ACC", fontWeight: "bold" },
+              tickLabels: { fill: colors.passRatio, fontWeight: "bold" },
             }}
           />
         )}
@@ -195,7 +196,9 @@ const MainChart = ({
           <VictoryLine
             key="Response Time Line"
             name="ignore1"
-            style={{ data: { stroke: "#1D0D5C", strokeWidth: "2.5" } }}
+            style={{
+              data: { stroke: colors.responseTime, strokeWidth: "2.5" },
+            }}
             data={responseTime}
             x={"time"}
             y={(datum) => datum.value / maxResponseTime}
@@ -206,8 +209,8 @@ const MainChart = ({
           <VictoryScatter
             key="Response Time Scatter"
             style={{
-              data: { fill: "#1D0D5C" },
-              labels: { fill: "#1D0D5C", fontWeight: "bold" },
+              data: { fill: colors.responseTime },
+              labels: { fill: colors.responseTime, fontWeight: "bold" },
             }}
             data={responseTime}
             x={"time"}
@@ -222,7 +225,7 @@ const MainChart = ({
             name="ignore2"
             style={{
               data: {
-                stroke: "#916cbf",
+                stroke: colors.concurrentUsers,
                 strokeWidth: "2.5",
                 strokeLinecap: "round",
               },
@@ -237,8 +240,8 @@ const MainChart = ({
           <VictoryScatter
             key="Concurrent Users Scatter"
             style={{
-              data: { fill: "#916cbf" },
-              labels: { fill: "#916cbf", fontWeight: "bold" },
+              data: { fill: colors.concurrentUsers },
+              labels: { fill: colors.concurrentUsers, fontWeight: "bold" },
             }}
             data={concurrentUsers}
             x={"time"}
@@ -251,7 +254,9 @@ const MainChart = ({
           <VictoryLine
             key="Transaction Rate Line"
             name="ignore3"
-            style={{ data: { stroke: "#649CD9", strokeWidth: "2.5" } }}
+            style={{
+              data: { stroke: colors.transactionRate, strokeWidth: "2.5" },
+            }}
             data={transactionRate}
             x={"time"}
             y={(datum) => datum.value / maxTransactionRate}
@@ -262,8 +267,8 @@ const MainChart = ({
           <VictoryScatter
             key="Transaction Rate Scatter"
             style={{
-              data: { fill: "#649CD9" },
-              labels: { fill: "#649CD9", fontWeight: "bold" },
+              data: { fill: colors.transactionRate },
+              labels: { fill: colors.transactionRate, fontWeight: "bold" },
             }}
             data={transactionRate}
             x={"time"}
@@ -276,7 +281,7 @@ const MainChart = ({
           <VictoryLine
             key="Pass Ratio Line"
             name="ignore4"
-            style={{ data: { stroke: "#CC6ACC", strokeWidth: "2.5" } }}
+            style={{ data: { stroke: colors.passRatio, strokeWidth: "2.5" } }}
             data={passRatio}
             x={"time"}
             y={(datum) => datum.value / maxPassRatio}
@@ -287,8 +292,8 @@ const MainChart = ({
           <VictoryScatter
             key="Pass Ratio Scatter"
             style={{
-              data: { fill: "#CC6ACC" },
-              labels: { fill: "#CC6ACC", fontWeight: "bold" },
+              data: { fill: colors.passRatio },
+              labels: { fill: colors.passRatio, fontWeight: "bold" },
             }}
             data={passRatio}
             x={"time"}

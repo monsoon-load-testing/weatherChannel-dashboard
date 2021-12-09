@@ -60,6 +60,13 @@ const ChartContainer = ({
     passRatio: "bg-monsoonPink",
   };
 
+  const chartColors = {
+    responseTime: "#1D0D5C",
+    concurrentUsers: "#916cbf",
+    transactionRate: "#649CD9",
+    passRatio: "#CC6ACC",
+  };
+
   return (
     <div className="w-full rounded-lg flex-shrink-0 flex-grow mt-2">
       <div className="flex justify-center">
@@ -93,6 +100,7 @@ const ChartContainer = ({
             zoomDomain={zoomDomain}
             setZoomDomain={setZoomDomain}
             active={active}
+            colors={chartColors}
           />
           <WindowChart
             responseTime={responseTime}
@@ -106,6 +114,7 @@ const ChartContainer = ({
             zoomDomain={zoomDomain}
             setZoomDomain={setZoomDomain}
             active={active}
+            colors={chartColors}
           />
         </div>
       </div>

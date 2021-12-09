@@ -25,6 +25,7 @@ const WindowChart = ({
   zoomDomain,
   setZoomDomain,
   active,
+  colors,
 }) => {
   const {
     isActiveResponseTime,
@@ -59,7 +60,7 @@ const WindowChart = ({
           <VictoryLine
             key="Window Response Time line"
             name="Response Time"
-            style={{ data: { stroke: "#1D0D5C" } }}
+            style={{ data: { stroke: colors.responseTime } }}
             data={responseTime}
             x={"time"}
             y={(datum) => datum.value / maxResponseTime}
@@ -69,7 +70,7 @@ const WindowChart = ({
         {isActiveConcurrentUsers && (
           <VictoryLine
             key="Window Concurrent Users Line"
-            style={{ data: { stroke: "#916cbf" } }}
+            style={{ data: { stroke: colors.concurrentUsers } }}
             data={concurrentUsers}
             x={"time"}
             y={(datum) => datum.value / maxConcurrentUsers}
@@ -79,7 +80,7 @@ const WindowChart = ({
         {isActiveTransactionRate && (
           <VictoryLine
             key="Window Transaction Rate Line"
-            style={{ data: { stroke: "#649CD9" } }}
+            style={{ data: { stroke: colors.transactionRate } }}
             data={transactionRate}
             x={"time"}
             y={(datum) => datum.value / maxTransactionRate}
@@ -89,7 +90,7 @@ const WindowChart = ({
         {isActivePassRatio && (
           <VictoryLine
             key="Window Pass Ratio Line"
-            style={{ data: { stroke: "#CC6ACC" } }}
+            style={{ data: { stroke: colors.passRatio } }}
             data={passRatio}
             x={"time"}
             y={(datum) => datum.value / maxPassRatio}
