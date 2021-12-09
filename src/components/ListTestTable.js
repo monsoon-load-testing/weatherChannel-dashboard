@@ -34,13 +34,13 @@ const ListTestTable = () => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-center text-xl font-medium text-gray-500 uppercase tracking-wider font-raleway"
                   >
                     Test Name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-center text-xl font-medium text-gray-500 uppercase tracking-wider font-raleway"
                   >
                     Date
                   </th>

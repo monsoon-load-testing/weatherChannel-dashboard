@@ -18,31 +18,31 @@ const Legend = ({ active, setActive }) => {
       <ul className="flex justify-evenly">
         <li
           onClick={activeHandler}
-          className="text-left cursor-pointer flex"
+          className="text-left cursor-pointer flex font-openSans"
           data-metric="isActiveResponseTime"
         >
-          Response Time: {isActiveResponseTime ? <LegendButton checked="on"/> : <LegendButton /> }
+          {isActiveResponseTime ? <LegendButton checked="on"/> : <LegendButton /> } Response Time
         </li>
         <li
           onClick={activeHandler}
-          className="text-left cursor-pointer flex"
+          className="text-left cursor-pointer flex font-openSans"
           data-metric="isActiveConcurrentUsers"
         >
-          Concurrent Users: {isActiveConcurrentUsers ? <LegendButton checked="on"/> : <LegendButton /> }
+          {isActiveConcurrentUsers ? <LegendButton checked="on"/> : <LegendButton /> } Concurrent Users
         </li>
         <li
           onClick={activeHandler}
-          className="text-left cursor-pointer flex"
+          className="text-left cursor-pointer flex font-openSans"
           data-metric="isActiveTransactionRate"
         >
-          Transaction Rate: {isActiveTransactionRate ? <LegendButton checked="on"/> : <LegendButton /> }
+          {isActiveTransactionRate ? <LegendButton checked="on"/> : <LegendButton /> } Transaction Rate
         </li>
         <li
           onClick={activeHandler}
-          className="text-left cursor-pointer flex"
+          className="text-left cursor-pointer flex font-openSans"
           data-metric="isActivePassRatio"
         >
-          Pass Ratio: {isActivePassRatio ? <LegendButton checked="on"/> : <LegendButton /> }
+          {isActivePassRatio ? <LegendButton checked="on"/> : <LegendButton /> } Pass Ratio
         </li>
       </ul>
     </div>

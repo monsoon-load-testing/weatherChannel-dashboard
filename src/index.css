@@ -6,3 +6,14 @@
 .active {
   background-color: #649CD9;
 }
+
+@layer base {
+  @font-face {
+    font-family: "Raleway-SemiBold";
+    src: url('./fonts/raleway/Raleway-SemiBold.ttf')
+  }
+  @font-face {
+    font-family: "OpenSans-Regular";
+    src: url('./fonts/openSans/OpenSans-Regular.ttf')
+  }
+}
