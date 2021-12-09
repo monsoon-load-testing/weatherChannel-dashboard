@@ -5,9 +5,9 @@ const Statistics = ({ responseTime }) => {
   const average = Math.round(responseTime["Average"]);
   const min = Math.round(responseTime["Min"]);
   const max = Math.round(responseTime["Max"]);
-  
+
   return (
-    <div className="w-full rounded-lg flex-shrink-0 flex-grow mb-0 mt-8">
+    <div className="w-full rounded-lg flex-shrink-0 flex-grow mb-0  pt-8 pl-24 pr-24">
       <link
         rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
@@ -24,7 +24,7 @@ const Statistics = ({ responseTime }) => {
               <div className="items-center bg-transparent w-full border-collapse">
                 <div className="">
                   <div>
-                    <p className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 text-s uppercase border-l-0 border-r-0 whitespace-nowrap font-raleway font-bold text-center">
+                    <p className=" text-xl px-6 bg-blueGray-50 text-black align-middle border border-solid border-blueGray-100 text-s border-l-0 border-r-0 whitespace-nowrap font-raleway font-bold text-center">
                       Response Time Metrics
                     </p>
                   </div>

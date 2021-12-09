@@ -68,26 +68,28 @@ const ChartContainer = ({
   };
 
   return (
-    <div className="w-full rounded-lg flex-shrink-0 flex-grow mt-2">
+    <div className="w-full rounded-lg flex-shrink-0 flex-grow">
       <div className="flex justify-center">
-        <div className="w-4/5 flex flex-col border bg-gray-500 mt-2">
-          <div className="absolute">
-            <button
-              className="h-10 min-w-min border rounded-lg"
-              onClick={refreshDataHandler}
-            >
-              <img
-                className="h-full w-full mx-auto"
-                src={logo}
-                alt="refresh icon"
-              />
-            </button>
+        <div className="w-full flex flex-col  mt-2">
+          <div className="pl-24 pr-24 flex">
+            <div className="absoluteSS inline-block">
+              <button
+                className="h-10 min-w-min border rounded-lg"
+                onClick={refreshDataHandler}
+              >
+                <img
+                  className="h-full w-full mx-auto"
+                  src={logo}
+                  alt="refresh icon"
+                />
+              </button>
+            </div>
+            <Legend
+              active={active}
+              setActive={setActive}
+              activeColors={legendColors}
+            />
           </div>
-          <Legend
-            active={active}
-            setActive={setActive}
-            activeColors={legendColors}
-          />
           <MainChart
             responseTime={responseTime}
             maxResponseTime={maxResponseTime}

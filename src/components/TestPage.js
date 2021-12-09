@@ -31,27 +31,27 @@ const TestPage = () => {
   const [currentStep, setCurrentStep] = useState("");
   const [currentStats, setCurrentStats] = useState({});
   const [currentData, setCurrentData] = useState({});
-  
+
   const refreshDataHandler = (e) => {
     e.preventDefault();
     const stepsPromise = apiClient.getListOfSteps(tableName);
     const statsPromise = apiClient.getTestStats(tableName);
     const datasetPromise = apiClient.getTestDataset(tableName);
     Promise.all([stepsPromise, statsPromise, datasetPromise])
-    .then((data) => {
-      setAllSteps(data[0]);
-      setAllStats(data[1]);
-      setAllData(formatData(data[2]));
-      return data;
-    })
-    .then((data) => {
-      const steps = data[0];
-      const step1 = steps[0];
-      setCurrentStep(step1);
-      setCurrentStats(allStats[currentStep] || {});
-      setCurrentData(allData[currentStep] || {});
-    });
-  }
+      .then((data) => {
+        setAllSteps(data[0]);
+        setAllStats(data[1]);
+        setAllData(formatData(data[2]));
+        return data;
+      })
+      .then((data) => {
+        const steps = data[0];
+        const step1 = steps[0];
+        setCurrentStep(step1);
+        setCurrentStats(allStats[currentStep] || {});
+        setCurrentData(allData[currentStep] || {});
+      });
+  };
 
   useEffect(() => {
     const stepsPromise = apiClient.getListOfSteps(tableName);
@@ -78,22 +78,22 @@ const TestPage = () => {
 
   const clickHandler = (e) => {
     e.preventDefault();
-    const button = e.target.closest('button')
-    const children = button.closest('header').childNodes
-    children.forEach(child => {
-      if (child.classList.contains('active')) {
-        child.classList.remove('active')
+    const button = e.target.closest("button");
+    const children = button.closest("header").childNodes;
+    children.forEach((child) => {
+      if (child.classList.contains("active")) {
+        child.classList.remove("active");
       }
-    })
-    button.classList.add('active')
+    });
+    button.classList.add("active");
     setCurrentStep(e.target.textContent);
   };
 
   return (
-    <div className="w-full bg-white relative flex overflow-hidden">
+    <div className="w-full bg-white relative flex overflow-hidden border-2 rounded-lg border-mediumPurple">
       <div className="w-full h-full flex flex-col justify-between">
         {/* <!-- Header --> */}
-        <header className="w-full flex items-center relative justify-between px-5 bg-gray-900 pl-0 pr-0 bg-monsoonWhite">
+        <header className="w-full flex items-center relative justify-between px-0  pl-0 pr-0 bg-monsoonWhite">
           {/* <!-- Profile --> */}
           {allSteps.map((stepName, index) => (
             <StepButton
@@ -102,20 +102,24 @@ const TestPage = () => {
               clickHandler={clickHandler}
               data-key={stepName}
               index={index}
+              lastStepIdx={allSteps.length - 1}
             />
           ))}
         </header>
 
         {/* <!-- Main --> */}
-        <main className="max-w-full h-full flex relative overflow-y-hidden">
+        <main className="max-w-full h-full flex relative overflow-y-hidden p-0">
           {/* <!-- Container --> */}
-          <div className="h-full w-full rounded-tl grid-flow-col auto-cols-max overflow-y-scroll pl-4">
+          <div className="h-full w-full m-auto rounded-tl p-0">
             {/* <!-- Container --> */}
             {JSON.stringify(currentStats) !== "{}" && (
               <Statistics {...currentStats} />
             )}
             {JSON.stringify(currentData) !== "{}" && (
-              <ChartContainer refreshDataHandler={refreshDataHandler} {...currentData} />
+              <ChartContainer
+                refreshDataHandler={refreshDataHandler}
+                {...currentData}
+              />
             )}
           </div>
         </main>
@@ -123,5 +127,4 @@ const TestPage = () => {
     </div>
   );
 };
-// downpour-test-1637014373298
 export default TestPage;

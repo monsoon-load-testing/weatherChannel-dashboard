@@ -4,16 +4,30 @@
 @tailwind utilities;
 
 .active {
-  background-color: #649CD9;
+  /* background-color: #649cd9; */
+  /* color: #649cd9; */
+  background-color: #916cbf;
+}
+
+.cropped {
+  margin: 700px 0 0 0;
 }
 
 @layer base {
   @font-face {
     font-family: "Raleway-SemiBold";
-    src: url('./fonts/raleway/Raleway-SemiBold.ttf')
+    src: url("./fonts/raleway/Raleway-SemiBold.ttf");
   }
   @font-face {
     font-family: "OpenSans-Regular";
-    src: url('./fonts/openSans/OpenSans-Regular.ttf')
+    src: url("./fonts/openSans/OpenSans-Regular.ttf");
+  }
+
+  html {
+    background-color: #1d0d5c;
   }
 }
+
+/* html {
+  background-size: 2000px 2000x, cover;
+} */
