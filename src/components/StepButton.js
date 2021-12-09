@@ -7,7 +7,7 @@ const StepButton = ({ stepName, clickHandler, index, lastStepIdx }) => {
       }`}
       onClick={clickHandler}
     >
-      <p className="text-center text-2xl text-monsoonWhite font-openSans">
+      <p className="text-center text-xl text-monsoonWhite font-raleway">
         {stepName}
       </p>
     </button>
