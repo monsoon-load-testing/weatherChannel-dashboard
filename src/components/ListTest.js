@@ -1,7 +1,13 @@
 const ListTest = (props) => {
   const date = new Date(Number(props.testDate, 10));
   const dateString = date.toDateString();
-  const dateTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  const minutes =
+    String(date.getMinutes()).length === 1
+      ? `0${date.getMinutes()}`
+      : String(date.getMinutes());
+  console.log(minutes);
+  console.log(typeof minutes);
+  const dateTime = `${date.getHours()}:${minutes}:${date.getSeconds()}`;
   const url = props.url;
 
   const clickHandler = props.clickHandler;
