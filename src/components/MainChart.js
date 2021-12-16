@@ -59,7 +59,7 @@ const MainChart = ({
             zoomDomain={zoomDomain}
             onZoomDomainChange={(domain) => setZoomDomain(domain)}
             labels={({ datum }) =>
-              `${datum.metric}: ${datum.value} ${datum.unit}`
+              `${datum.metric}: ${Math.round(datum.value)} ${datum.unit}`
             }
             labelComponent={
               <VictoryTooltip
