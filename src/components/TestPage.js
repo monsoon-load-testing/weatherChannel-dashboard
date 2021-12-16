@@ -37,20 +37,12 @@ const TestPage = () => {
     const stepsPromise = apiClient.getListOfSteps(tableName);
     const statsPromise = apiClient.getTestStats(tableName);
     const datasetPromise = apiClient.getTestDataset(tableName);
-    Promise.all([stepsPromise, statsPromise, datasetPromise])
-      .then((data) => {
-        setAllSteps(data[0]);
-        setAllStats(data[1]);
-        setAllData(formatData(data[2]));
-        return data;
-      })
-      .then((data) => {
-        const steps = data[0];
-        const step1 = steps[0];
-        setCurrentStep(step1);
-        setCurrentStats(allStats[currentStep] || {});
-        setCurrentData(allData[currentStep] || {});
-      });
+    Promise.all([stepsPromise, statsPromise, datasetPromise]).then((data) => {
+      setAllSteps(data[0]);
+      setAllStats(data[1]);
+      setAllData(formatData(data[2]));
+      return data;
+    });
   };
 
   useEffect(() => {
